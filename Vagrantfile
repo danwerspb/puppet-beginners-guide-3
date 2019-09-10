@@ -10,11 +10,20 @@ Vagrant.configure("2") do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.vm.define "puppet_beginner" do | puppet_beginner |
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+    puppet_beginner.vm.provider "libvirt" do | libvirt |
+	libvirt.memory = "1024"
+ 	libvirt.cpus = "3"
+     end
+  end
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   # If you have trouble running the 64-bit Vagrant VM, try this instead:
   # config.vm.box = "ubuntu/xenial32"
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "generic/ubuntu1804"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -24,7 +33,7 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8088
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
